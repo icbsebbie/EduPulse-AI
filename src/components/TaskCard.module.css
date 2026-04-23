@@ -1,0 +1,250 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), opacity var(--transition-slow), transform var(--transition-slow);
+  animation: slideIn 200ms ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.cardCompleted {
+  opacity: 0.65;
+}
+
+.cardDeleting {
+  opacity: 0;
+  transform: translateX(16px);
+  pointer-events: none;
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-neutral-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.checkbox:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.checkboxChecked {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.checkboxChecked:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.titleCompleted {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.description {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.priority {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.priorityHigh {
+  background: var(--color-error-light);
+  color: var(--color-error);
+  border: 1px solid var(--color-error-border);
+}
+
+.priorityMedium {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+  border: 1px solid #ffe4a0;
+}
+
+.priorityLow {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.dueDate {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.dueDateOverdue {
+  color: var(--color-error);
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.card:hover .actions {
+  opacity: 1;
+}
+
+.actionBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  transition: background var(--transition), color var(--transition);
+}
+
+.actionBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.deleteBtn:hover {
+  background: var(--color-error-light);
+  color: var(--color-error);
+}
+
+/* Edit form */
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.editTitle {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border-focus);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(51, 154, 240, 0.15);
+}
+
+.editDesc {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  outline: none;
+  resize: vertical;
+  min-height: 52px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.editDesc:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(51, 154, 240, 0.15);
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+}
+
+.editSave {
+  padding: 5px 14px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background var(--transition);
+}
+
+.editSave:hover {
+  background: var(--color-primary-hover);
+}
+
+.editCancel {
+  padding: 5px 14px;
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition);
+}
+
+.editCancel:hover {
+  background: var(--color-neutral-200);
+  color: var(--color-text-primary);
+}
